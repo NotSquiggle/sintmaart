@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AvGeek's St. Maarten Adventure</title>
+    <title>frick you</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
         body {
@@ -33,14 +33,18 @@
             animation: fadeInDown 1s ease-out;
         }
         .container {
-            width: 80%;
-            margin: 50px auto;
-            position: relative;
+            width: 100%;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            height: auto;
+            position: relative;
+            margin-top: 80px;
+        }
+        .calendar-stack {
+            position: relative;
+            width: 300px;
+            height: 250px;
         }
         .calendar-page {
             width: 300px;
@@ -83,7 +87,7 @@
             background: rgba(0, 0, 0, 0.7);
             font-size: 16px;
             width: 100%;
-            margin-top: 100px;
+            margin-top: 120px;
         }
         a {
             color: #ffcc00;
@@ -107,10 +111,11 @@
     <audio id="tearSound" src="https://www.myinstants.com/media/sounds/paper-rip.mp3"></audio>
     <div class="container">
         <h2>7-Day Aviation-Themed Trip</h2>
+        <div class="calendar-stack"></div>
         
         <script>
             document.addEventListener("DOMContentLoaded", function () {
-                const container = document.querySelector(".container");
+                const container = document.querySelector(".calendar-stack");
                 const tearSound = document.getElementById("tearSound");
                 const days = [
                     { header: "Day 1", body: "Arrival & First Spotting", footer: "- Arrive at SXM & check in.<br>- First spotting at Maho Beach.<br>- Dinner at Sunset Beach Bar." },
@@ -122,11 +127,11 @@
                     { header: "Day 7", body: "Final Spotting", footer: "- Breakfast at Sunset Beach Bar.<br>- Capture final shots at Cupecoy Beach." }
                 ];
                 
-                days.forEach((day, index) => {
+                days.reverse().forEach((day, index) => {
                     let card = document.createElement("div");
                     card.classList.add("calendar-page");
-                    card.style.top = `${index * 20}px`;
-                    card.style.zIndex = `${7 - index}`;
+                    card.style.top = `${index * 5}px`;
+                    card.style.zIndex = `${index}`;
                     card.innerHTML = `
                         <div class="calendar-header">${day.header}</div>
                         <div class="calendar-body">${day.body}</div>
@@ -137,24 +142,15 @@
                         this.style.animation = 'tearOff 0.6s ease forwards';
                         setTimeout(() => {
                             this.remove();
-                            adjustStacking();
                         }, 600);
                     };
                     container.appendChild(card);
                 });
-                
-                function adjustStacking() {
-                    let pages = document.querySelectorAll(".calendar-page");
-                    pages.forEach((page, index) => {
-                        page.style.top = `${index * 20}px`;
-                        page.style.zIndex = `${pages.length - index}`;
-                    });
-                }
             });
         </script>
     </div>
     <footer>
-        Built by <a href="https://github.com/notsquiggle">Thomas</a> for the ultimate AvGeek & Vols experience! 🚀🏈
+        Built by <a href="https://github.com/notsquiggle">notsquiggle</a> for the ultimate AvGeek & Vols experience! 🚀🏈
     </footer>
 </body>
 </html>
